@@ -1,0 +1,69 @@
+.search {
+  & {
+    width: 40%;
+    max-width: 100%;
+    margin: 20px auto 40px;
+  }
+  label {
+    color: #183153;
+    font-size: 15px;
+    margin-bottom: 5px;
+  }
+}
+.card-container {
+  & {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+  .card {
+    & {
+      padding: 10px;
+      background-color: #f0f1f3;
+      box-shadow: 0 1px 4px rgba($color: #000000, $alpha: 0.4);
+      transition: 0.5s;
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    .name {
+      display: block;
+      margin: 10px auto;
+      font-size: 18px;
+      font-weight: 500;
+      color: #183153;
+    }
+    .rate {
+      & {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+      }
+      span {
+        color: #183153;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    }
+    .pricing {
+      & {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+      }
+      span {
+        color: #183153;
+        font-weight: 600;
+        font-size: 17px;
+      }
+      button {
+        background-color: #ffd43b;
+        color: #183153;
+        font-size: 15px;
+      }
+    }
+  }
+}
