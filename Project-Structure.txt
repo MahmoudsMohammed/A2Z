@@ -1,0 +1,20 @@
+product:
+1. components
+    1. all-products
+    2. product-details
+2. service 
+    1. product.service
+3. Module
+    1. product roting module
+
+Cart:
+1. components
+    1. cart
+2. service 
+    1. cart.service
+
+Shared:
+1. components
+    1. header
+2. service 
+    1. Shared.service

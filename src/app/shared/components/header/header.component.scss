@@ -1,0 +1,38 @@
+header {
+  a {
+    cursor: pointer;
+  }
+  .container {
+    & {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 15px;
+      color: #183153;
+    }
+    > a {
+      letter-spacing: 6px;
+      color: #ffd43b;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .a,
+    .z {
+      font-size: 25px;
+      font-weight: 600;
+      color: #183153;
+    }
+    .links {
+      a {
+        color: #183153;
+      }
+      a:first-of-type {
+        font-size: 18px;
+        margin-right: 20px;
+      }
+      a:last-of-type {
+        color: #ffd43b;
+      }
+    }
+  }
+}
