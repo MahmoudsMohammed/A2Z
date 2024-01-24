@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { productService } from '../../product.service';
-interface product {
+
+// decripe the response data
+export interface product {
   id: number;
   title: string;
   price: number;
@@ -20,9 +22,28 @@ interface product {
 export class AllProductsComponent implements OnInit {
   constructor(private productServ: productService) {}
   products: product[] = [];
+  categories: string[];
   ngOnInit(): void {
+    // get all products
     this.productServ.getAllProducts().subscribe((res) => {
       this.products = res;
     });
+    // get all Categories
+    this.productServ.getAllCategories().subscribe((res) => {
+      this.categories = res;
+      this.categories.unshift('All');
+    });
+  }
+
+  onCahnge(input: HTMLInputElement) {
+    if (input.value !== 'All') {
+      this.productServ.getByCategory(input.value).subscribe((res) => {
+        this.products = res;
+      });
+    } else {
+      this.productServ.getAllProducts().subscribe((res) => {
+        this.products = res;
+      });
+    }
   }
 }

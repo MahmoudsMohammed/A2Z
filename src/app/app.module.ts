@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { CartModule } from './cart/cart.module';
     SharedModule,
     ProductModule,
     CartModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
