@@ -1,40 +1,21 @@
 <div class="loader" *ngIf="isLoading">
   <app-loader></app-loader>
 </div>
+<form class="search">
+  <label for="category" class="">Category:</label>
+  <select
+    name="category"
+    (change)="onCahnge($event)"
+    class="form-select"
+    id="category"
+  >
+    <option *ngFor="let cat of categories" [value]="cat">
+      {{ cat }}
+    </option>
+  </select>
+</form>
 <div *ngIf="!isLoading">
-  <form class="search">
-    <label for="category" class="">Category:</label>
-    <select
-      name="category"
-      (change)="onCahnge($event)"
-      class="form-control"
-      id="category"
-    >
-      <option *ngFor="let cat of categories" [value]="cat">
-        {{ cat }}
-      </option>
-    </select>
-  </form>
   <div class="card-container">
-    <div class="card" *ngFor="let product of products">
-      <div class="image">
-        <img src="{{ product.image }}" alt="" />
-      </div>
-      <span class="name">{{ product.title }}</span>
-      <div class="rate">
-        <span>Rating : {{ product.rating.rate }}</span>
-        <div>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </div>
-      </div>
-      <div class="pricing">
-        <span>Price : {{ product.price }}$</span>
-        <button class="btn">Add to Cart</button>
-      </div>
-    </div>
+    <product *ngFor="let product of products" [data]="product"></product>
   </div>
 </div>

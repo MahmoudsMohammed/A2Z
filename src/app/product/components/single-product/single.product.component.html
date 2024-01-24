@@ -1,0 +1,20 @@
+<div class="card">
+  <div class="image">
+    <img src="{{ data.image }}" alt="" />
+  </div>
+  <span class="name">{{ data.title }}</span>
+  <div class="rate">
+    <span>Rating : {{ data.rating.rate }}</span>
+    <div>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+      <i class="fa-regular fa-star"></i>
+    </div>
+  </div>
+  <div class="pricing">
+    <span>Price : {{ data.price }}$</span>
+    <button class="btn">Add to Cart</button>
+  </div>
+</div>
