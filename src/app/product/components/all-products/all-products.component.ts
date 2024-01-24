@@ -82,4 +82,21 @@ export class AllProductsComponent implements OnInit {
       ? this.categoryProducts((e.target as HTMLInputElement).value)
       : this.allProductsData();
   }
+  // add selected item to LS
+  addCart(data: product) {
+    let allCartProducts = [];
+    if (localStorage.getItem('cart')) {
+      allCartProducts = JSON.parse(localStorage.getItem('cart'));
+      const exist = allCartProducts.find((e) => e.id === data.id);
+      if (exist) {
+        alert('Product You Want to Add Already Exist at the Cart');
+      } else {
+        allCartProducts.push(data);
+        localStorage.setItem('cart', JSON.stringify(allCartProducts));
+      }
+    } else {
+      allCartProducts.push(data);
+      localStorage.setItem('cart', JSON.stringify(allCartProducts));
+    }
+  }
 }

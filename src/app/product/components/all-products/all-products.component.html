@@ -16,6 +16,10 @@
 </form>
 <div *ngIf="!isLoading">
   <div class="card-container">
-    <product *ngFor="let product of products" [data]="product"></product>
+    <product
+      *ngFor="let product of products"
+      [data]="product"
+      (selected)="addCart($event)"
+    ></product>
   </div>
 </div>
