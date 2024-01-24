@@ -5,15 +5,16 @@ import { product } from './components/all-products/all-products.component';
 @Injectable({ providedIn: 'root' })
 export class productService {
   constructor(private http: HttpClient) {}
-  getAllProducts() {
-    return this.http.get<product[]>('https://fakestoreapi.com/products');
+
+  getProducts() {
+    return this.http.get<product[]>(`https://fakestoreapi.com/products`);
   }
-  getAllCategories() {
+  getCategories() {
     return this.http.get<string[]>(
       'https://fakestoreapi.com/products/categories'
     );
   }
-  getByCategory(cat) {
+  getProductsByCategory(cat: string) {
     return this.http.get<product[]>(
       `https://fakestoreapi.com/products/category/${cat}`
     );

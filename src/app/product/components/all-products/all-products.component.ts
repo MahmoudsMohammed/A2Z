@@ -23,27 +23,53 @@ export class AllProductsComponent implements OnInit {
   constructor(private productServ: productService) {}
   products: product[] = [];
   categories: string[];
+
   ngOnInit(): void {
     // get all products
-    this.productServ.getAllProducts().subscribe((res) => {
-      this.products = res;
-    });
+    this.allProductsData();
     // get all Categories
-    this.productServ.getAllCategories().subscribe((res) => {
-      this.categories = res;
-      this.categories.unshift('All');
-    });
+    this.categriesData();
   }
 
-  onCahnge(input: HTMLInputElement) {
-    if (input.value !== 'All') {
-      this.productServ.getByCategory(input.value).subscribe((res) => {
+  // get all products
+  allProductsData() {
+    this.productServ.getProducts().subscribe(
+      (res) => {
         this.products = res;
-      });
-    } else {
-      this.productServ.getAllProducts().subscribe((res) => {
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
+  }
+  // Get All Categories
+  categriesData() {
+    this.productServ.getCategories().subscribe(
+      (res) => {
+        this.categories = res;
+        this.categories.unshift('all');
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
+  }
+  // Get Products based on Category
+  categoryProducts(cat) {
+    this.productServ.getProductsByCategory(cat).subscribe(
+      (res) => {
         this.products = res;
-      });
-    }
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  // get products based on category
+  onCahnge(e: Event) {
+    (e.target as HTMLInputElement).value !== 'all'
+      ? this.categoryProducts((e.target as HTMLInputElement).value)
+      : this.allProductsData();
   }
 }
