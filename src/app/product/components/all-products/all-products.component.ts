@@ -23,6 +23,7 @@ export class AllProductsComponent implements OnInit {
   constructor(private productServ: productService) {}
   products: product[] = [];
   categories: string[];
+  isLoading = false;
 
   ngOnInit(): void {
     // get all products
@@ -33,34 +34,43 @@ export class AllProductsComponent implements OnInit {
 
   // get all products
   allProductsData() {
+    this.isLoading = true;
     this.productServ.getProducts().subscribe(
       (res) => {
         this.products = res;
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         alert(error.message);
       }
     );
   }
   // Get All Categories
   categriesData() {
+    this.isLoading = true;
     this.productServ.getCategories().subscribe(
       (res) => {
         this.categories = res;
         this.categories.unshift('all');
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         alert(error.message);
       }
     );
   }
   // Get Products based on Category
   categoryProducts(cat) {
+    this.isLoading = true;
     this.productServ.getProductsByCategory(cat).subscribe(
       (res) => {
         this.products = res;
+        this.isLoading = false;
       },
       (error) => {
+        this.isLoading = false;
         alert(error.message);
       }
     );

@@ -55,7 +55,7 @@
         align-items: center;
         margin: 10px 0;
       }
-      
+
       span {
         color: #183153;
         font-weight: 600;
@@ -88,4 +88,11 @@
       }
     }
   }
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
