@@ -79,10 +79,12 @@ export class AllProductsComponent implements OnInit {
       if (exist) {
         alert('Product You Want to Add Already Exist at the Cart');
       } else {
+        data.amount = 1;
         allCartProducts.push(data);
         localStorage.setItem('cart', JSON.stringify(allCartProducts));
       }
     } else {
+      data.amount = 1;
       allCartProducts.push(data);
       localStorage.setItem('cart', JSON.stringify(allCartProducts));
     }

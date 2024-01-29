@@ -26,11 +26,33 @@ export class ProductDetailComponent implements OnInit {
           this.data = res;
         },
         (error) => {
-          console.log(error);
+          alert(error.message);
           this.isLoading = false;
         }
       );
   }
+
+  // add selected item to LS
+  addCart() {
+    let allCartProducts = [];
+    if (localStorage.getItem('cart')) {
+      allCartProducts = JSON.parse(localStorage.getItem('cart'));
+      const exist = allCartProducts.find((e) => e.id === this.data.id);
+      if (exist) {
+        alert('Product You Want to Add Already Exist at the Cart');
+      } else {
+        this.data.amount = 1;
+        allCartProducts.push(this.data);
+        localStorage.setItem('cart', JSON.stringify(allCartProducts));
+      }
+    } else {
+      this.data.amount = 1;
+      allCartProducts.push(this.data);
+      localStorage.setItem('cart', JSON.stringify(allCartProducts));
+    }
+  }
+
+  // Back To Main Page
   Back() {
     this.route.navigate(['products']);
   }

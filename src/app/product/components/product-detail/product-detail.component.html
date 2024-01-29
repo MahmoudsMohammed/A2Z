@@ -36,7 +36,11 @@
                 {{ data.description }}
               </p>
               <div class="cart mt-5">
-                <button class="btn btn-warning text-white text-uppercase px-4">
+                <button
+                  class="btn btn-warning text-white text-uppercase px-4"
+                  type="button"
+                  (click)="addCart()"
+                >
                   Add to cart
                 </button>
               </div>
