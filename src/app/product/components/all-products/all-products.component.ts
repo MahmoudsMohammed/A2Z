@@ -1,19 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { productService } from '../../product.service';
+import { product } from '../../models/product.interface';
 
-// decripe the response data
-export interface product {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  image: string;
-  rating: {
-    rate: number;
-    count: number;
-  };
-}
 @Component({
   selector: 'app-all-products',
   templateUrl: './all-products.component.html',
