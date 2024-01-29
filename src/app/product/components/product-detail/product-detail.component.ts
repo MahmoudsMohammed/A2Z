@@ -15,14 +15,20 @@ export class ProductDetailComponent implements OnInit {
     private route: Router
   ) {}
   data: product;
+  isLoading = false;
   ngOnInit(): void {
+    this.isLoading = true;
     this.productServ
       .getProductById(this.actRot.snapshot.params['id'])
       .subscribe(
         (res) => {
+          this.isLoading = false;
           this.data = res;
         },
-        (error) => [console.log(error)]
+        (error) => {
+          console.log(error);
+          this.isLoading = false;
+        }
       );
   }
   Back() {
