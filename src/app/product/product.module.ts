@@ -11,6 +11,6 @@ import { productComponent } from './components/single-product/single.product.com
     ProductDetailComponent,
     productComponent,
   ],
-  imports: [CommonModule, SharedModule],
+  imports: [SharedModule, CommonModule],
 })
 export class ProductModule {}

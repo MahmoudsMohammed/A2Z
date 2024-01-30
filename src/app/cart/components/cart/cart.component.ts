@@ -1,9 +1,6 @@
 import {
   Component,
-  ElementRef,
   OnInit,
-  Renderer2,
-  ViewChild,
 } from '@angular/core';
 import { product } from '../../../shared/models/product.interface';
 
@@ -13,11 +10,10 @@ import { product } from '../../../shared/models/product.interface';
   styleUrl: './cart.component.scss',
 })
 export class CartComponent implements OnInit {
-  constructor(private render: Renderer2) {}
-  @ViewChild('order', { static: true }) order: ElementRef;
   products: product[];
   total: number;
   negative = false;
+  orderCart = false;
 
   ngOnInit(): void {
     if (localStorage.getItem('cart')) {
@@ -34,11 +30,13 @@ export class CartComponent implements OnInit {
       localStorage.setItem('cart', JSON.stringify(this.products));
       this.calcTotal();
       this.negative = true;
+      setTimeout(() => {
+        this.negative = false;
+      }, 2000);
     } else {
       this.products[index].amount = +(e.target as HTMLInputElement).value;
       localStorage.setItem('cart', JSON.stringify(this.products));
       this.calcTotal();
-      this.negative = false;
     }
   }
 
@@ -56,5 +54,18 @@ export class CartComponent implements OnInit {
     this.products.splice(index, 1);
     localStorage.setItem('cart', JSON.stringify(this.products));
     this.calcTotal();
+  }
+
+  // Make Order
+  onOrder() {
+    if (this.products.length !== 0) {
+      this.orderCart = true;
+      setTimeout(() => {
+        this.orderCart = false;
+      }, 2000);
+      this.products = [];
+      localStorage.setItem('cart', JSON.stringify(this.products));
+      this.calcTotal();
+    }
   }
 }
