@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { product } from '../../models/product.interface';
+import { product } from '../../../shared/models/product.interface';
 import { productService } from '../../product.service';
 import { Router } from '@angular/router';
 

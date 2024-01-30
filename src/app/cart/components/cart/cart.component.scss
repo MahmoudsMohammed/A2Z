@@ -6,3 +6,22 @@ td,
 h1 {
   color: #183153 !important;
 }
+img {
+  height: 150px;
+  width: 150px;
+}
+td {
+  padding: 15px 5px;
+}
+#trash:hover {
+  & {
+    border-color: #dc3545 !important;
+  }
+  i {
+    color: #dc3545;
+  }
+}
+.wrong {
+  border-color: #dc3545 !important;
+}
+
